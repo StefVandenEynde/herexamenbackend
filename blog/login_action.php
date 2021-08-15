@@ -1,13 +1,14 @@
 <?php
 
 session_start();
+include "logic.php";
 
 //Check if POST and not GET
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Check if email is set. If not show feedback to user on login page
     if(!isset($_POST['email'])) {
         $_SESSION['feedback'] = "Email is required!";
-        header('Location: blog/login.php');
+        header('Location: login.php');
         die;
     }
     //Check if password is set. If not show feedback to user on login page
@@ -37,14 +38,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     //User does not exist cannot login. Should create an account
     if(!$user) {
         $_SESSION['feedback'] = 'These credentials do not match our records!';
-        header('Location: blog/login.php');
+        header('Location: login.php');
         die;
     }
 
     //Check if user input in password field hashed is the same as the has from our database. If not password is incorrect
     if(!password_verify($_POST['password'],$user['hash'])) {
         $_SESSION['feedback'] = 'These credentials do not match our records.';
-        header('Location: blog/login.php');
+        header('Location: login.php');
         die;
     }
 
@@ -62,6 +63,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     setcookie('auth',$userSessionId,time() + 3600,'','','',true);
 
     //Redirect to dashboard
-    header('Location: http://localhost/blog/index.php');
+    header('Location: index.php');
 }
 ?>

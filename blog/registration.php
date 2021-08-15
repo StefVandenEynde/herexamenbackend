@@ -1,4 +1,8 @@
 <?php
+
+
+include "logic.php";
+
 session_start();
 //Check if auth cookie is already set
 if(isset($_COOKIE['auth'])){
@@ -19,7 +23,7 @@ if(isset($_COOKIE['auth'])){
 
     //User already exists & is logged in redirect to dashboard
     if($user) {
-        header('Location: blog/index.php');
+        header('Location: index.php');
         die;
     }
 }

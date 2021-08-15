@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "logic.php";
 
 //Check if POST and not GET
 if($_SERVER['REQUEST_METHOD'] === 'POST') {

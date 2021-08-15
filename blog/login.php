@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "logic.php";
 //Check if auth cookie is already set
 if(isset($_COOKIE['auth'])){
     //Connect with database
@@ -48,7 +49,7 @@ if(isset($_COOKIE['auth'])){
     <label for="password">Password</label><br>
     <input type="password" name="password" id="password" required><br>
 
-    <button>Login!</button>
+    <button>login</button>
     <a href="registration.php">Or create account?</a>
 </form>
 </body>
